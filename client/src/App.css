@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+*{
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navBar {
+  background-color: navy;
   color: white;
+  height: 100px;
 }
 
-.App-link {
-  color: #61dafb;
+.eventTile {
+  display: inline-block;
+  border: 1px solid black;
+  width: 30%;
+  color: white;
+  font-size:vmax;
+}
+.eventTileImage:hover{
+  border:1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgb(13,110,253);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.eventTileImage {
+  display: block;
+  background-color: lightblue;
+  border: black 1px solid;
+  padding-top: 56.25%;
+  border-radius: 10px;
+  cursor: pointer
+}
+
+.eventBar{
+  display: flex;
+  background-color: black;
+  justify-content: space-between;
+  padding: 10px 5px;
+}
+
+.scrollButton {
+  background-color: black;
+  border: none;
+  color:white;
+  padding: 5px;
+  font-size:200%;
+}
+
+.eventBanner {
+  display: inline-block;
+  background-color: lightblue;
+  border: black 1px solid;
+  width: 640px;
+  height: 360px;
+  margin: 10px;
+}
+
+input {
+  width: 75%
+}
+label{
+  width:25%;
+  text-align:left
 }
