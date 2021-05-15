@@ -1,4 +1,4 @@
-import { navigate } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 import React, {useState, useEffect} from 'react'
 import DeleteButton from './DeleteButton'
 import axios from 'axios';
@@ -62,9 +62,14 @@ const EventBar = (props) => {
                         return <div className="eventTile" key={idx}>
                             <div className="eventTileImage" style={tileStyle} onClick={e=> {e.preventDefault();navigate('./events/'+event._id)}}>
                             </div>
-                            <p className="eventTitle">{event.name}</p> 
-                            <p>{Moment(event.showStart).format('LLLL')} to {Moment(event.showEnd).format('hh:mm A')}</p>
+                            <h4 className="eventTitle">{event.name}</h4> 
+                            <hr/>
+                            <p>{Moment(event.showStart).format('LLLL')}
+                            <br/>to
+                            <br/>{Moment(event.showEnd).format('LLLL')}</p>
+                            <hr/>
                             <p className="eventDate">{event.eventDescript}</p>
+                            <p><a href={event.accessURL} target="_blank"><button className="btn btn-light me-2 btn-outline-primary">Buy Tickets</button></a> <Link to={'/events/'+event._id}><button className="btn btn-light me-2 btn-outline-primary">More Info</button></Link></p>
                         </div>
                     })}
                 <button onClick={scrollRight} className="scrollButton" style={rightStyle}>&gt;</button>

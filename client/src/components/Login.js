@@ -55,7 +55,7 @@ const Login = (props) => {
         </div>
         <div className="center">
           <button 
-            type="submit"
+            type="submit" className="btn btn-light me-2 btn-outline-primary"
           >Sign In</button>
         </div>
       </form>

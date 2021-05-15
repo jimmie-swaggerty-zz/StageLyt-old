@@ -113,6 +113,7 @@ const Register = props => {
         <div className="center">
           <button 
             type="submit"
+            className="btn btn-light me-2 btn-outline-primary"
           >Register Me</button>
         </div>
       </form>

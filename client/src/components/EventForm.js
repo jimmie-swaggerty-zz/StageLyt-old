@@ -31,7 +31,7 @@ const EventForm = (props) => {
           <div style={tileStyle}></div>
           <div className="dflex">
             <div className="input">
-            <label>name: </label>
+            <label>Event Name: </label>
             <input
               type="text"
               name="eventName"
@@ -41,7 +41,7 @@ const EventForm = (props) => {
             {errors.name ? (<p className="error">{errors.name.message}</p>) : null}
           </div>
           <div className="input">
-            <label>showStart: </label>
+            <label>Show Start Date and Time: </label>
             <input
               type="datetime-local"
               name="showStart"
@@ -53,7 +53,7 @@ const EventForm = (props) => {
             ) : null}
           </div>
           <div className="input">
-            <label>showEnd: </label>
+            <label>Show End Date and Time: </label>
             <input
               type="datetime-local"
               name="showEnd"
@@ -65,9 +65,9 @@ const EventForm = (props) => {
             ) : null}
           </div>
           <div className="input">
-            <label>eventDescript: </label>
-            <input
-              type="text"
+            <label>Event Details: </label>
+            <textarea
+              type="textarea"
               name="eventDescript"
               value={eventDescript}
               onChange={(e) => setEventDescript(e.target.value)}
@@ -77,8 +77,8 @@ const EventForm = (props) => {
             ) : null}
           </div>
           <div className="input">
-            <label>ticketInfo: </label>
-            <input
+            <label>Ticket Info: </label>
+            <textarea
               type="text"
               name="ticketInfo"
               value={ticketInfo}
@@ -89,7 +89,7 @@ const EventForm = (props) => {
             ) : null}
           </div>
           <div className="input">
-            <label>accessURL: </label>
+            <label>Ticket URL: </label>
             <input
               type="url"
               name="accessURL"

@@ -5,7 +5,7 @@ import RegisterUser from "../components/RegisterUser";
 const LogReg = (props) => {
     const {updateStatus} = props
     return (
-        <div className="container-flex">
+        <div className="container">
             <Login updateStatus={updateStatus} />
             <hr />
             <RegisterUser />

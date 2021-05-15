@@ -8,15 +8,15 @@ const Main = (props) => {
     const {status, updateStatus} = props
     return (
         <div>
+            {status==="logged-out"&&
+            <>
+                <h2>Welcome</h2>
+                <p>Welcome to StageLyt! Please login in order to add your own events, or purchase tickets to one of our many events listed below!</p>
+            </>}
             <EventBar/>
             {status==="logged-in" &&
             <div>
             <MyEvents/>
-            </div>
-            }
-            {status==="logged-out"&&
-            <div className="loginbox">
-                <Login updateStatus={updateStatus} />
             </div>
             }
         </div>
