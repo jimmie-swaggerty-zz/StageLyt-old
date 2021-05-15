@@ -4,7 +4,7 @@ import DeleteButton from './DeleteButton'
 import axios from 'axios';
 import Moment from 'moment'
 
-const EventBar = (props) => {
+const MyEvents = (props) => {
     const [startIndex, setStartIndex] = useState(0)
     const [endIndex, setEndIndex] = useState(3)
     const [events, setEvents] = useState([])
@@ -17,10 +17,9 @@ const EventBar = (props) => {
     }
 
     useEffect(()=>{
-        axios.get('http://localhost:8000/api/events')
+        axios.get('http://localhost:8000/api/myevents',{withCredentials:true})
             .then(res=>{
                 setEvents(res.data);
-
             });
     },[events])
 
@@ -52,24 +51,27 @@ const EventBar = (props) => {
     }
     return (
         <>
-            <h2>Upcoming Events</h2>
+            <h2>My Events</h2>
             <div className="eventBar">
                 <button onClick={scrollLeft} className="scrollButton" style={leftStyle}>&lt;</button>
                     {events.length > 0 && events.slice(startIndex,endIndex).map((event, idx)=>{
-                        const tileStyle = {
-                            backgroundImage: 'url('+event.imageURL+')',   backgroundSize: 'cover',  backgroundPosition: 'center'
-                        }
+                                             const tileStyle = {
+                                                backgroundImage: 'url('+event.imageURL+')',   backgroundSize: 'cover',  backgroundPosition: 'center'
+                                            }
                         return <div className="eventTile" key={idx}>
                             <div className="eventTileImage" style={tileStyle} onClick={e=> {e.preventDefault();navigate('./events/'+event._id)}}>
                             </div>
                             <p className="eventTitle">{event.name}</p> 
-                            <p>{Moment(event.showStart).format('LLLL')} to {Moment(event.showEnd).format('hh:mm A')}</p>
+                            <p>{Moment(event.showStart).format('LLLL')} to {Moment(event.showEnd).format('LLLL')}</p>
                             <p className="eventDate">{event.eventDescript}</p>
+                            <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); navigate('/events/update/'+event._id)}}>Update</button>
+                            <DeleteButton id={event._id}/>
                         </div>
                     })}
+                    {events.length === 0 && <h3>No Current Events <button onClick={(e)=>{e.preventDefault();navigate('events/new')}} className="btn btn-light me-2 btn-outline-primary">Add Event</button></h3>}
                 <button onClick={scrollRight} className="scrollButton" style={rightStyle}>&gt;</button>
             </div>
         </>
     )
 }
-export default EventBar;
+export default MyEvents;

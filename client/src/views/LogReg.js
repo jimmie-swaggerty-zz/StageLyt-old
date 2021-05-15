@@ -2,10 +2,11 @@ import React from "react";
 import Login from "../components/Login";
 import RegisterUser from "../components/RegisterUser";
 
-const LogReg = () => {
+const LogReg = (props) => {
+    const {updateStatus} = props
     return (
         <div className="container-flex">
-            <Login />
+            <Login updateStatus={updateStatus} />
             <hr />
             <RegisterUser />
         </div>

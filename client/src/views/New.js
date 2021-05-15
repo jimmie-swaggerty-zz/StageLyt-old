@@ -38,6 +38,7 @@ const New = (props) => {
                     initialEventDescript=""
                     initialTicketInfo=""
                     initialAccessURL=""
+                    initialImageURL=""
                     buttonText="Add Event"
                     onSubmitProp={createEvent}
                     errors={errors}

@@ -46,6 +46,7 @@ const Update = (props) => {
                     initialEventDescript={currentEvent.eventDescript}
                     initialTicketInfo={currentEvent.ticketInfo}
                     initialAccessURL={currentEvent.accessURL}
+                    initialImageURL={currentEvent.imageURL}
                     buttonText="Update Event"
                     onSubmitProp={updateEvent}
                     errors={errors}

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from '@reach/router';
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const {updateStatus} = props
 
   const login = event => {
     event.preventDefault();
@@ -14,15 +15,13 @@ const Login = () => {
         password: password,
       },
       {
-        // this will force the sending of the credentials / cookies so they can be updated
-        //    XMLHttpRequest from a different domain cannot set cookie values for their own domain 
-        //    unless withCredentials is set to true before making the request
         withCredentials: true
       })
       .then((res) => {
         console.log(res.cookie);
         console.log(res);
         console.log(res.data, 'is res data!');
+        updateStatus("logged-in")
         navigate("/home");
       })
       .catch(err => {
@@ -32,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="logincomp">
       <h2>Login</h2>
       <p className="error-text">{errorMessage ? errorMessage : ""}</p>
       <form onSubmit={login}>

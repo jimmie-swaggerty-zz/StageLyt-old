@@ -1,10 +1,20 @@
 import { navigate, Link } from '@reach/router';
 import React from 'react'
 import icontemp from '../images/icontemp.png'
+import axios from "axios";
+import { useState } from 'react/cjs/react.development';
 
 const NavBar = (props) => {
 
-    const {button, link} = props;
+    const {status, updateStatus} = props;
+    const [currentStatus, setCurrentStatus] = useState(status)
+
+    const Logout = (e) => {
+        axios.post("http://localhost:8000/api/user/logout")
+        updateStatus(currentStatus)
+        setCurrentStatus("logged-out")
+        navigate('./login')
+    }
 
     return (
     <nav className="navbar navbar-dark bg-primary">
@@ -13,14 +23,18 @@ const NavBar = (props) => {
                 <img src={icontemp} alt="" width="30" height="24"/>
                 StageLyte
             </Link>
-                {/* <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="" aria-label="Search"/>
-                    <button className="btn btn-light btn-outline-primary" type="submit">Search</button>
-                </form> */}
+                {status==="logged-in" &&
                 <form className="d-flex">
                     <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); navigate('../events/new')}}>New Event</button>
-                    <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); navigate(link)}}>{button}</button>
+                    <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); Logout()}}>Logout</button>
                 </form>
+                }
+                {status==="logged-out" &&
+                    <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={
+                        e=>{e.preventDefault(); navigate('/login');}}>
+                        Log In
+                    </button>
+                }
         </div>
     </nav>
     )

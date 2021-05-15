@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 const EventForm = (props) => {
   const {
-    initialName,    initialShowStart,    initialShowEnd,    initialEventDescript,    initialTicketInfo,    initialAccessURL,    buttonText,    onSubmitProp,    errors
+    initialName,    initialShowStart,    initialShowEnd,    initialEventDescript,    initialTicketInfo,    initialAccessURL, initialImageURL,    buttonText,    onSubmitProp,    errors
   } = props;
   
   console.log(initialName);
@@ -12,19 +12,24 @@ const EventForm = (props) => {
   const [eventDescript, setEventDescript] = useState(initialEventDescript);
   const [ticketInfo, setTicketInfo] = useState(initialTicketInfo);
   const [accessURL, setAccessURL] = useState(initialAccessURL);
+  const [imageURL, setImageURL] = useState(initialImageURL);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     onSubmitProp({
-      name: eventName, showStart, showEnd, eventDescript, ticketInfo, accessURL
+      name: eventName, showStart, showEnd, eventDescript, ticketInfo, accessURL, imageURL
     });
   };
 
+  const tileStyle = {
+    backgroundImage: 'url('+imageURL+')',   backgroundSize: 'cover',  backgroundPosition: 'center', width: '400px', height: '225px'
+  }
   return (
     <form onSubmit={onSubmitHandler}>
       <div className="container">
         <div className="row">
-          <div className="col-9">
+          <div style={tileStyle}></div>
+          <div className="dflex">
             <div className="input">
             <label>name: </label>
             <input
@@ -93,6 +98,18 @@ const EventForm = (props) => {
             />
             {errors.accessURL ? (
               <p className="error">{errors.accessURL.message}</p>
+            ) : null}
+          </div>
+          <div className="input">
+            <label>Image URL: </label>
+            <input
+              type="url"
+              name="imageURL"
+              value={imageURL}
+              onChange={(e) => setImageURL(e.target.value)}
+            />
+            {errors.accessURL ? (
+              <p className="error">{errors.imageURL.message}</p>
             ) : null}
           </div>
           <label></label>

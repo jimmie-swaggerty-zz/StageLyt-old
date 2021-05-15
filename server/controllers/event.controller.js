@@ -10,9 +10,9 @@ module.exports.index = (request, response) => {
 module.exports.createEvent = (req, response) => {
     const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true });
     const email = decodedJwt.payload.email;
-    const { name, showStart, showEnd, eventDescript, ticketInfo, accessURL } = req.body;
+    const { name, showStart, showEnd, eventDescript, ticketInfo, accessURL, imageURL } = req.body;
     Event.create({
-        name, showStart, showEnd, eventDescript, ticketInfo, accessURL, email
+        name, showStart, showEnd, eventDescript, ticketInfo, accessURL, imageURL, email
     })
         .then(event => response.json(event))
         .catch(err => response.status(400).json(err))
@@ -20,7 +20,16 @@ module.exports.createEvent = (req, response) => {
 
 module.exports.getAllEvents = (request, response) => {
     Event.find({})
-        .sort({name: "ascending"})
+        .sort({showStart: "ascending"})
+        .then(events => response.json(events))
+        .catch(err => response.json(err))
+}
+
+module.exports.getMyEvents = (req, response) => {
+    const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true });
+    const email = decodedJwt.payload.email;
+    Event.find({email: email})
+        .sort({showStart: "ascending"})
         .then(events => response.json(events))
         .catch(err => response.json(err))
 }

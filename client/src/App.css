@@ -62,5 +62,29 @@ input {
 }
 label{
   width:25%;
-  text-align:left
+  text-align:left;
+}
+
+h2 {
+  text-align: center;
+  padding:20px;
+}
+
+button {
+  text-align: center;
+}
+
+.loginbox {
+  display:block;
+  justify-content: space-around;
+  width: 300px
+}
+
+.logincomp {
+  width:100%;
+}
+
+h3 {
+  color:white;
+  padding: 20px
 }

@@ -12,7 +12,7 @@ module.exports = {
                     // respond with 401 error code
                     res.status(401).json({ verified: false })
                 } else {
-                    console.log("JWT Verified");
+                    // console.log("JWT Verified");
                     next();
                 }
         })

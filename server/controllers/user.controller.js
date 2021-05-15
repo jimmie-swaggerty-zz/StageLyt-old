@@ -69,8 +69,6 @@ module.exports = {
             })
     },
     logout: (req, res) => {
-        const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true });
-        const userEmail = decodedJwt.payload.email;
         console.log("logged out!");
         res.clearCookie("usertoken");
         res.json({ message: "You have successfully logged out!"});
