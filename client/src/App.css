@@ -79,8 +79,13 @@ h2 {
 
 button {
   text-align: center;
+  height: 38px;
+  margin: auto
 }
 
+h4{
+  height:65px;
+}
 .loginbox {
   display:block;
   justify-content: space-around;

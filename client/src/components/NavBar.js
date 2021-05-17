@@ -13,28 +13,35 @@ const NavBar = (props) => {
         axios.post("http://localhost:8000/api/user/logout")
         updateStatus(currentStatus)
         setCurrentStatus("logged-out")
-        navigate('./login')
+        navigate('/login')
+    }
+
+    const searchHandler = (e) => {
+        e.preventDefault();
+        navigate('/search/'+e.target.search.value)
     }
 
     return (
     <nav className="navbar navbar-dark bg-primary">
         <div className="container-fluid">
-            <Link className="navbar-brand" to="../home">
+            <Link className="navbar-brand" to="/home">
                 <img src={icontemp} alt="" width="30" height="24"/>
                 StageLyte
             </Link>
-                {status==="logged-in" &&
+            {status==="logged-in" &&
                 <form className="d-flex">
-                    <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); navigate('../events/new')}}>New Event</button>
-                    <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); Logout()}}>Logout</button>
+                        <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); navigate('../events/new')}}>New Event</button>
+                        <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={e=>{e.preventDefault(); Logout()}}>Logout</button>
                 </form>
-                }
-                {status==="logged-out" &&
+            }
+            {status==="logged-out" &&
+                <form className="d-flex">
                     <button className="btn btn-light me-2 btn-outline-primary" type="button" onClick={
                         e=>{e.preventDefault(); navigate('/login');}}>
                         Log In
                     </button>
-                }
+                </form>
+            }
         </div>
     </nav>
     )

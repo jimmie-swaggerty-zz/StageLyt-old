@@ -1,11 +1,9 @@
 import React from 'react';
 import EventBar from '../components/EventBar'
-import Login from '../components/Login'
-import New from '../views/New'
 import MyEvents from '../components/MyEvents'
 
 const Main = (props) => {
-    const {status, updateStatus} = props
+    const {status} = props
     return (
         <div>
             {status==="logged-out"&&
