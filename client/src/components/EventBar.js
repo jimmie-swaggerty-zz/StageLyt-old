@@ -22,6 +22,8 @@ const EventBar = (props) => {
 
             });
     },[events])
+    
+
 
     //establish style states
     const [leftStyle, setLeftStyle] =useState(inactive)

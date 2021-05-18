@@ -4,6 +4,11 @@
   text-align: center;
 }
 
+body {
+  background-color: black;
+  color: white;
+}
+
 .navBar {
   background-color: navy;
   color: white;
