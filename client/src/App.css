@@ -105,3 +105,11 @@ p {
   width: 60%;
   display: inline-block
 }
+
+.login{
+  background-color: gray;
+  margin: 20px;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}

@@ -1,6 +1,5 @@
 import { navigate, Link } from '@reach/router';
 import React, {useState, useEffect} from 'react'
-import DeleteButton from './DeleteButton'
 import axios from 'axios';
 import Moment from 'moment'
 
@@ -57,7 +56,7 @@ const EventBar = (props) => {
                 <button onClick={scrollLeft} className="scrollButton" style={leftStyle}>&lt;</button>
                     {events.length > 0 && events.slice(startIndex,endIndex).map((event, idx)=>{
                         const tileStyle = {
-                            backgroundImage: 'url('+event.imageURL+')',   backgroundSize: 'cover',  backgroundPosition: 'center'
+                            backgroundImage: 'url('+event.imageURL+')',   backgroundSize: 'contain',  backgroundPosition: 'center'
                         }
                         return <div className="eventTile" key={idx}>
                             <div className="eventTileImage" style={tileStyle} onClick={e=> {e.preventDefault();navigate('./events/'+event._id)}}>

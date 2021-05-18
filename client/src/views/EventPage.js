@@ -22,7 +22,7 @@ const EventPage = (props) => {
     }, [id])
 
     const tileStyle = {
-        backgroundImage: 'url('+event.imageURL+')',   backgroundSize: 'cover',  backgroundPosition: 'center', width: '400px', height: '225px'
+        backgroundImage: 'url('+event.imageURL+')',   backgroundSize: 'contain',  backgroundPosition: 'center', width: '400px', height: '225px'
       }
     return (
         <div>

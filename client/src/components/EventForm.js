@@ -22,7 +22,7 @@ const EventForm = (props) => {
   };
 
   const tileStyle = {
-    backgroundImage: 'url('+imageURL+')',   backgroundSize: 'cover',  backgroundPosition: 'center', width: '400px', height: '225px'
+    backgroundImage: 'url('+imageURL+')',   backgroundSize: 'contain',  backgroundPosition: 'center', width: '400px', height: '225px'
   }
   return (
     <form onSubmit={onSubmitHandler}>
