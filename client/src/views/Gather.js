@@ -10,13 +10,12 @@ const Gather = () => {
             headers:{
                 'Access-Control-Allow-Origin':'*',
                 'crossorigin':true,
-                "Content-type": "application/json; charset=UTF-8",
+                "Content-type":'application/x-www-form-urlencoded',
                 'CORS_DEBUG':1,
             },
             params: {
                 'apiKey':'QeNrVe1dlWfZMpqk',
-            },
-            withCredentials: true
+            }
         })
             .then(res=>{
                 setGuests(res.data);

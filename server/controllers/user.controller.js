@@ -72,5 +72,5 @@ module.exports = {
         console.log("logged out!");
         res.clearCookie("usertoken");
         res.json({ message: "You have successfully logged out!"});
-    }
+    },      
 }
